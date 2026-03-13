@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const clinicSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  address: { type: String, required: true },
+  licenseNo: { type: String, required: true, unique: true },
+  contactInfo: { type: String },
+  workingHours: { type: String }, // e.g., "09:00-17:00"
+  isActive: { type: Boolean, default: true },
+  adminEmail: { type: String, required: true }, // Reference to the creator
+  logo: { type: String },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Clinic', clinicSchema);

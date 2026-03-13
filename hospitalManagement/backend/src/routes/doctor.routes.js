@@ -1,0 +1,20 @@
+const express = require('express');
+const {
+  getDoctorAppointments,
+  updateAvailability,
+  createPrescription,
+  getPatientDetails
+} = require('../controllers/doctor.controller');
+const { protect } = require('../middlewares/authMiddleware');
+const { authorize } = require('../middlewares/roleMiddleware');
+const router = express.Router();
+
+// Only doctors can access these routes
+router.use(protect);
+router.use(authorize('doctor'));
+
+router.get('/appointments', getDoctorAppointments);
+router.put('/availability', updateAvailability);
+router.get('/patient/:id', getPatientDetails);
+
+module.exports = router;
