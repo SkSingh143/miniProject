@@ -44,11 +44,6 @@ export const API_ENDPOINTS = {
     HISTORY: '/appointments/history', // GET patient history
   },
 
-  // F. Medicine Price Comparison
-  MEDICINES: {
-    SEARCH: '/medicines/search',
-    COMPARE: '/medicines/compare',
-  },
 
   // G. Patient Routes
   PATIENT: {

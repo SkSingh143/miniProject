@@ -7,77 +7,72 @@ import Navbar from '../components/common/Navbar';
 const icons = {
   dashboard: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-      <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
     </svg>
   ),
   clinics: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/>
-      <path d="M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/>
+      <path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1" />
+      <path d="M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" />
     </svg>
   ),
   stats: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 20V10M12 20V4M6 20v-6"/>
+      <path d="M18 20V10M12 20V4M6 20v-6" />
     </svg>
   ),
   doctors: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-      <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+      <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" />
+      <line x1="19" y1="8" x2="19" y2="14" /><line x1="22" y1="11" x2="16" y2="11" />
     </svg>
   ),
   walkin: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
-      <rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/>
+      <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+      <rect x="8" y="2" width="8" height="4" rx="1" /><path d="M9 14l2 2 4-4" />
     </svg>
   ),
   schedule: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-      <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
     </svg>
   ),
   appointments: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
     </svg>
   ),
   prescription: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-      <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
-      <line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+      <polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
     </svg>
   ),
   home: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
     </svg>
   ),
   book: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2v20M2 12h20"/>
-      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2v20M2 12h20" />
+      <circle cx="12" cy="12" r="10" />
     </svg>
   ),
   history: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      <path d="M2 12h2M20 12h2"/>
-    </svg>
-  ),
-  compare: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+      <path d="M2 12h2M20 12h2" />
     </svg>
   ),
   patients: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-      <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" />
     </svg>
   ),
 };
@@ -97,7 +92,6 @@ const iconMap = {
   'Book Appointment': 'book',
   'My History': 'history',
   'Prescriptions': 'prescription',
-  'Compare Prices': 'compare',
 };
 
 const roleTheme = {
@@ -116,28 +110,28 @@ const DashboardLayout = () => {
 
   const roleNavItems = {
     super_admin: [
-      { name: 'Dashboard',      path: '/admin/dashboard' },
+      { name: 'Dashboard', path: '/admin/dashboard' },
       { name: 'Manage Clinics', path: '/admin/clinics' },
-      { name: 'System Stats',   path: '/admin/stats' },
+      { name: 'System Stats', path: '/admin/stats' },
     ],
     clinic_admin: [
-      { name: 'Dashboard',        path: '/clinic_admin/dashboard' },
-      { name: 'Appointments',     path: '/clinic-admin/appointments' },
-      { name: 'Doctors',          path: '/clinic_admin/doctors' },
-      { name: 'Walk-In Booking',  path: '/clinic_admin/book-walk-in' },
-      { name: 'Clinic Profile',   path: '/clinic-admin/profile' },
-      { name: 'Patient History',  path: '/clinic-admin/appointments' },
+      { name: 'Dashboard', path: '/clinic_admin/dashboard' },
+      { name: 'Appointments', path: '/clinic-admin/appointments' },
+      { name: 'Doctors', path: '/clinic_admin/doctors' },
+      { name: 'Walk-In Booking', path: '/clinic_admin/book-walk-in' },
+      { name: 'Clinic Profile', path: '/clinic-admin/profile' },
+      { name: 'Patient History', path: '/clinic-admin/appointments' },
     ],
     doctor: [
-      { name: 'Dashboard',         path: '/doctor/dashboard' },
-      { name: 'My Schedule',       path: '/doctor/schedule' },
-      { name: 'Appointments',      path: '/doctor/appointments' },
+      { name: 'Dashboard', path: '/doctor/dashboard' },
+      { name: 'My Schedule', path: '/doctor/schedule' },
+      { name: 'Appointments', path: '/doctor/appointments' },
     ],
     patient: [
-      { name: 'Home',             path: '/patient/home' },
+      { name: 'Home', path: '/patient/home' },
       { name: 'Book Appointment', path: '/patient/select-clinic' },
-      { name: 'My History',       path: '/patient/appointments' },
-      { name: 'Prescriptions',    path: '/patient/prescriptions' },
+      { name: 'My History', path: '/patient/appointments' },
+      { name: 'Prescriptions', path: '/patient/prescriptions' },
     ],
   };
 
@@ -179,11 +173,11 @@ const DashboardLayout = () => {
             >
               {isSidebarOpen ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="11 17 6 12 11 7" /><polyline points="18 17 13 12 18 7" /></svg>
                   Collapse
                 </div>
               ) : (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="13 17 18 12 13 7" /><polyline points="6 17 11 12 6 7" /></svg>
               )}
             </button>
 
@@ -209,8 +203,8 @@ const DashboardLayout = () => {
                       fontWeight: isActive ? 600 : 500,
                       fontSize: '0.875rem',
                     }}
-                    onMouseEnter={e => { if (!isActive) { e.currentTarget.style.background = '#f8fafc'; e.currentTarget.style.color = '#334155'; }}}
-                    onMouseLeave={e => { if (!isActive) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#64748b'; }}}
+                    onMouseEnter={e => { if (!isActive) { e.currentTarget.style.background = '#f8fafc'; e.currentTarget.style.color = '#334155'; } }}
+                    onMouseLeave={e => { if (!isActive) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#64748b'; } }}
                   >
                     {/* Active indicator bar */}
                     {isActive && (
@@ -220,11 +214,11 @@ const DashboardLayout = () => {
                         background: theme.gradient
                       }} />
                     )}
-                    
+
                     <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
                       {icons[iconKey]}
                     </span>
-                    
+
                     {isSidebarOpen && (
                       <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {item.name}

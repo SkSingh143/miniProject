@@ -33,7 +33,7 @@ import PatientDetails from './pages/doctor/PatientDetails';
 
 // Patient Pages
 import BookAppointment from './pages/patient/BookAppointment';
-import CompareMedicine from './pages/patient/CompareMedicine';
+
 import PatientHome from './pages/patient/Home';
 import SelectClinic from './pages/patient/SelectClinic';
 import AppointmentHistory from './pages/patient/AppointmentHistory';
@@ -247,14 +247,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        {/* <Route 
-          path="/patient/compare-medicine" 
-          element={
-            <PrivateRoute allowedRoles={[ROLES.PATIENT]}>
-              <CompareMedicine />
-            </PrivateRoute>
-          } 
-        /> */}
+
         <Route 
           path="/patient/dashboard" 
           element={
