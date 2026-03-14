@@ -17,16 +17,22 @@ export const API_ENDPOINTS = {
   // C. Clinic Admin Routes
   CLINIC: {
     PROFILE: '/clinic/profile',
-    DOCTORS: '/clinic/doctors', // POST to add, GET to list
-    PATIENTS: '/clinic/patients', // GET history
+    DOCTORS: '/clinic/doctors',
+    DOCTOR_AVAILABILITY: (profileId) => `/clinic/doctors/${profileId}/availability`,
+    APPOINTMENTS: '/clinic/appointments',
+    APPOINTMENT: (id) => `/clinic/appointments/${id}`,
+    PATIENTS: '/clinic/patients',
+    PATIENT_HISTORY: (patientId) => `/clinic/patients/${patientId}/history`,
   },
 
   // D. Doctor Routes
   DOCTOR: {
     APPOINTMENTS: '/doctor/appointments',
+    UPDATE_STATUS: (id) => `/doctor/appointments/${id}/status`,
     AVAILABILITY: '/doctor/availability',
-    PRESCRIPTIONS: '/prescriptions',
+    PRESCRIPTIONS: '/doctor/prescriptions',
     PATIENT_DETAILS: (id) => `/doctor/patient/${id}`,
+    PROFILE: '/doctor/profile',
   },
 
   // E. Appointment Routes
@@ -42,5 +48,15 @@ export const API_ENDPOINTS = {
   MEDICINES: {
     SEARCH: '/medicines/search',
     COMPARE: '/medicines/compare',
+  },
+
+  // G. Patient Routes
+  PATIENT: {
+    CLINICS: '/patient/clinics',
+    CLINIC_DOCTORS: (clinicId) => `/patient/clinics/${clinicId}/doctors`,
+    APPOINTMENTS: '/patient/appointments',
+    CANCEL: (id) => `/patient/appointments/${id}/cancel`,
+    PRESCRIPTIONS: '/patient/prescriptions',
+    PRESCRIPTION: (id) => `/patient/prescriptions/${id}`,
   },
 };

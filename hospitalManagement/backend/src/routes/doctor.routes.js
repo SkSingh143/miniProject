@@ -3,7 +3,9 @@ const {
   getDoctorAppointments,
   updateAvailability,
   createPrescription,
-  getPatientDetails
+  getPatientDetails,
+  updateAppointmentStatus,
+  getDoctorProfile
 } = require('../controllers/doctor.controller');
 const { protect } = require('../middlewares/authMiddleware');
 const { authorize } = require('../middlewares/roleMiddleware');
@@ -14,7 +16,10 @@ router.use(protect);
 router.use(authorize('doctor'));
 
 router.get('/appointments', getDoctorAppointments);
+router.put('/appointments/:id/status', updateAppointmentStatus);  // Update status (confirm/complete/cancel)
 router.put('/availability', updateAvailability);
+router.get('/profile', getDoctorProfile);
 router.get('/patient/:id', getPatientDetails);
+router.post('/prescriptions', createPrescription);  // Create prescription
 
 module.exports = router;

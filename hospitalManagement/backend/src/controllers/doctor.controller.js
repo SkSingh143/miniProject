@@ -103,3 +103,46 @@ exports.getPatientDetails = async (req, res, next) => {
     next(error);
   }
 };
+
+// @desc    Update appointment status (confirm / complete / cancel)
+// @route   PUT /api/doctor/appointments/:id/status
+exports.updateAppointmentStatus = async (req, res, next) => {
+  try {
+    const { status } = req.body;
+    const allowedStatuses = ['confirmed', 'completed', 'cancelled'];
+
+    if (!allowedStatuses.includes(status)) {
+      return apiResponse(res, 400, `Status must be one of: ${allowedStatuses.join(', ')}`);
+    }
+
+    const appointment = await Appointment.findOne({
+      _id: req.params.id,
+      doctor: req.user._id
+    });
+
+    if (!appointment) return apiResponse(res, 404, 'Appointment not found or not assigned to you');
+
+    appointment.status = status;
+    await appointment.save();
+
+    apiResponse(res, 200, `Appointment marked as ${status}`, appointment);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Get doctor's own profile + clinic info
+// @route   GET /api/doctor/profile
+exports.getDoctorProfile = async (req, res, next) => {
+  try {
+    const profile = await DoctorProfile.findOne({ user: req.user._id })
+      .populate('user', 'name email')
+      .populate('clinic', 'name address contactInfo workingHours');
+
+    if (!profile) return apiResponse(res, 404, 'Doctor profile not found');
+
+    apiResponse(res, 200, 'Profile fetched', profile);
+  } catch (error) {
+    next(error);
+  }
+};

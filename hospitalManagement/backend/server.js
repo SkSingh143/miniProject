@@ -11,6 +11,7 @@ const clinicRoutes = require('./src/routes/clinic.routes');
 const doctorRoutes = require('./src/routes/doctor.routes');
 const appointmentRoutes = require('./src/routes/appointment.routes');
 const medicineRoutes = require('./src/routes/medicine.routes');
+const patientRoutes = require('./src/routes/patient.routes');
 
 // Connect to Database
 connectDB();
@@ -28,6 +29,7 @@ app.use('/api/clinic', clinicRoutes);
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/medicines', medicineRoutes);
+app.use('/api/patient', patientRoutes);
 
 // Error Handler (Must be last middleware)
 app.use(errorHandler);

@@ -60,3 +60,23 @@ exports.getSlots = async (req, res, next) => {
     next(error);
   }
 };
+
+// @desc    Get appointment history for logged-in patient
+// @route   GET /api/appointments/history
+exports.getAppointmentHistory = async (req, res, next) => {
+  try {
+    const { status } = req.query;
+    const query = { patient: req.user._id };
+    if (status && status !== 'upcoming') query.status = status;
+    if (status === 'upcoming') query.status = { $in: ['pending', 'confirmed'] };
+
+    const appointments = await Appointment.find(query)
+      .populate('doctor', 'name email')
+      .populate('clinic', 'name address')
+      .sort({ date: -1 });
+
+    apiResponse(res, 200, 'Appointment history fetched', appointments);
+  } catch (error) {
+    next(error);
+  }
+};
