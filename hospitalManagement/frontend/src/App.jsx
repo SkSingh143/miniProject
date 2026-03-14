@@ -247,14 +247,14 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route 
+        {/* <Route 
           path="/patient/compare-medicine" 
           element={
             <PrivateRoute allowedRoles={[ROLES.PATIENT]}>
               <CompareMedicine />
             </PrivateRoute>
           } 
-        />
+        /> */}
         <Route 
           path="/patient/dashboard" 
           element={

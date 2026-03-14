@@ -50,18 +50,6 @@ const PatientHome = () => {
         </svg>
       ),
       gradient: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
-    },
-    {
-      title: 'Compare Medicines',
-      description: 'Search and compare medicine prices across pharmacies.',
-      path: '/patient/compare-medicine',
-      label: 'Compare Prices',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-      ),
-      gradient: 'linear-gradient(135deg, #f59e0b, #ef4444)',
     }
   ];
 
@@ -173,11 +161,11 @@ const PatientHome = () => {
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: '#059669', fontWeight: 700, fontSize: '0.85rem'
                   }}>
-                    {apt.doctorName?.charAt(0)}
+                    {apt.doctor?.name?.charAt(0) || 'D'}
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#1e293b', margin: 0, fontSize: '0.9rem' }}>Dr. {apt.doctorName}</h4>
-                    <p style={{ fontSize: '0.78rem', color: '#64748b', margin: 0 }}>{apt.specialization}</p>
+                    <h4 style={{ fontWeight: 600, color: '#1e293b', margin: 0, fontSize: '0.9rem' }}>Dr. {apt.doctor?.name}</h4>
+                    {apt.specialization && <p style={{ fontSize: '0.78rem', color: '#64748b', margin: 0 }}>{apt.specialization}</p>}
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
@@ -194,7 +182,7 @@ const PatientHome = () => {
             <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>📅</div>
             <p style={{ color: '#94a3b8', fontStyle: 'italic' }}>You have no upcoming appointments.</p>
             <Link to="/patient/book" style={{ marginTop: '12px', display: 'inline-block' }}>
-              <Button variant="primary">Book Your First Appointment</Button>
+              <Button variant="primary">Book Your Appointment</Button>
             </Link>
           </div>
         )}

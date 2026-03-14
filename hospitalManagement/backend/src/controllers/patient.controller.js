@@ -76,6 +76,7 @@ exports.cancelAppointment = async (req, res, next) => {
 exports.getPatientPrescriptions = async (req, res, next) => {
   try {
     const prescriptions = await Prescription.find({ patient: req.user._id })
+      .populate('patient', 'name email')
       .populate('doctor', 'name')
       .populate('clinic', 'name address')
       .populate('appointment', 'date timeSlot')
@@ -95,6 +96,7 @@ exports.getPrescriptionById = async (req, res, next) => {
       _id: req.params.id,
       patient: req.user._id
     })
+      .populate('patient', 'name email')
       .populate('doctor', 'name email')
       .populate('clinic', 'name address contactInfo')
       .populate('appointment', 'date timeSlot');

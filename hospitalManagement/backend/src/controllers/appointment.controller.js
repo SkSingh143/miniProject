@@ -31,9 +31,59 @@ exports.bookAppointment = async (req, res, next) => {
     });
 
     // 3. Send Email Notification
-    await sendEmail(req.user.email, 'Appointment Confirmed', `Your appointment is on ${date} at ${timeSlot}`);
+    // await sendEmail(req.user.email, 'Appointment Confirmed', `Your appointment is on ${date} at ${timeSlot}`);
 
     apiResponse(res, 201, 'Appointment booked successfully', appointment);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Walk-in booking for clinic admin
+// @route   POST /api/appointments/walk-in
+exports.walkInBooking = async (req, res, next) => {
+  try {
+    const { patientName, patientPhone, doctorId, date, timeSlot } = req.body;
+    const clinicId = req.user.clinicId; 
+    
+    // Check if slot is already booked
+    const existingAppointment = await Appointment.findOne({
+      doctor: doctorId,
+      date: date,
+      timeSlot: timeSlot,
+      status: { $ne: 'cancelled' }
+    });
+
+    if (existingAppointment) {
+      return apiResponse(res, 409, 'Slot already booked');
+    }
+
+    // Since this is a walk-in, we need to create a patient profile if one doesn't exist
+    // For simplicity, we create a basic user record tied to their phone
+    const User = require('../models/User');
+    let patient = await User.findOne({ phone: patientPhone });
+    
+    if (!patient) {
+      // Create ghost patient account
+      patient = await User.create({
+        name: patientName,
+        email: `${patientPhone}@walkin.local`, // Dummy email
+        phone: patientPhone,
+        password: patientPhone, // Dummy password
+        role: 'patient'
+      });
+    }
+
+    const appointment = await Appointment.create({
+      patient: patient._id,
+      doctor: doctorId,
+      clinic: clinicId,
+      date,
+      timeSlot,
+      status: 'confirmed' // Walk-ins are usually auto-confirmed
+    });
+
+    apiResponse(res, 201, 'Walk-in appointment booked successfully', appointment);
   } catch (error) {
     next(error);
   }

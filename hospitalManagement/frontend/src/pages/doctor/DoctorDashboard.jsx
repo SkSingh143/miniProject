@@ -27,20 +27,6 @@ const DoctorDashboard = () => {
       gradient: 'linear-gradient(135deg, #0f766e, #14b8a6)',
     },
     {
-      title: 'Create Prescription',
-      description: 'Write and send prescriptions for your patients.',
-      path: '/doctor/prescription',
-      variant: 'outline',
-      label: 'New Prescription',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-        </svg>
-      ),
-      gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-    },
-    {
       title: 'My Schedule',
       description: 'Manage your weekly availability and working hours.',
       path: '/doctor/schedule',
@@ -180,22 +166,36 @@ const DoctorDashboard = () => {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <div style={{
-                    width: '40px', height: '40px', borderRadius: '10px',
+                    width: '44px', height: '44px', borderRadius: '12px',
                     background: 'linear-gradient(135deg, #dbeafe, #e0e7ff)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#3b82f6', fontWeight: 700, fontSize: '0.85rem'
+                    color: '#3b82f6', fontWeight: 700, fontSize: '1rem'
                   }}>
-                    {apt.patientName?.charAt(0)}
+                    {(apt.patient?.name || apt.patientName || 'P').charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#1e293b', margin: 0, fontSize: '0.9rem' }}>{apt.patientName}</h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
-                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>{apt.timeSlot}</span>
-                      <span className={`badge ${getStatusBadge(apt.status)}`}>{apt.status}</span>
+                    <h4 style={{ fontWeight: 600, color: '#1e293b', margin: 0, fontSize: '0.95rem' }}>
+                      {apt.patient?.name || apt.patientName || 'Unknown Patient'}
+                    </h4>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        🕒 {apt.timeSlot}
+                      </span>
+                      {apt.patient?.phone && (
+                        <span style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          📞 {apt.patient.phone}
+                        </span>
+                      )}
+                      {apt.patient?.email && (
+                        <span style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          ✉️ {apt.patient.email}
+                        </span>
+                      )}
+                      <span className={`badge ${getStatusBadge(apt.status)}`} style={{ marginLeft: 'auto' }}>{apt.status}</span>
                     </div>
                   </div>
                 </div>
-                <Link to={`/doctor/prescription?aptId=${apt._id}&patientId=${apt.patientId}`}>
+                <Link to={`/doctor/prescription?aptId=${apt._id}&patientId=${apt.patient?._id || apt.patient}`}>
                   <Button variant="primary">Prescribe</Button>
                 </Link>
               </div>

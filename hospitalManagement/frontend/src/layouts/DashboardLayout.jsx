@@ -132,14 +132,12 @@ const DashboardLayout = () => {
       { name: 'Dashboard',         path: '/doctor/dashboard' },
       { name: 'My Schedule',       path: '/doctor/schedule' },
       { name: 'Appointments',      path: '/doctor/appointments' },
-      { name: 'Create Prescription', path: '/doctor/appointments' },
     ],
     patient: [
       { name: 'Home',             path: '/patient/home' },
       { name: 'Book Appointment', path: '/patient/select-clinic' },
       { name: 'My History',       path: '/patient/appointments' },
       { name: 'Prescriptions',    path: '/patient/prescriptions' },
-      { name: 'Compare Prices',   path: '/patient/compare-medicine' },
     ],
   };
 

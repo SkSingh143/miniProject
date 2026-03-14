@@ -35,7 +35,7 @@ const generatePrescriptionPDF = (prescription) => {
       </div>
 
       <div class="section info-grid">
-        <div class="info-row"><strong>Patient</strong>${prescription.patient?.name || 'Patient'}</div>
+        <div class="info-row"><strong>Patient</strong>${prescription.appointment?.patient?.name || prescription.patient?.name || 'Patient'}</div>
         <div class="info-row"><strong>Doctor</strong>Dr. ${prescription.doctor?.name || ''}</div>
         <div class="info-row"><strong>Date</strong>${apptDate}</div>
         <div class="info-row"><strong>Time Slot</strong>${prescription.appointment?.timeSlot || 'N/A'}</div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosClient from '../../api/axiosClient';
 import { API_ENDPOINTS } from '../../api/endpoints';
 import InputField from '../../components/forms/InputField';
@@ -8,9 +8,22 @@ import { ToastContext } from '../../context/ToastContext';
 const WalkInBooking = () => {
   const { addToast } = React.useContext(ToastContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [doctors, setDoctors] = useState([]);
   const [formData, setFormData] = useState({
     patientName: '', patientPhone: '', doctorId: '', date: '', timeSlot: ''
   });
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axiosClient.get(API_ENDPOINTS.CLINIC.DOCTORS);
+        setDoctors(response.data || []);
+      } catch (error) {
+        addToast('Failed to load doctors available', 'error');
+      }
+    };
+    fetchDoctors();
+  }, [addToast]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +85,49 @@ const WalkInBooking = () => {
           
           <div style={{ marginBottom: '20px' }}>
             <p style={{ fontSize: '0.78rem', fontWeight: 600, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>Appointment Details</p>
-            <InputField label="Doctor ID" name="doctorId" value={formData.doctorId} onChange={(e) => setFormData({...formData, doctorId: e.target.value})} required />
+            
+            {/* Custom Doctor Dropdown */}
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#475569', marginBottom: '6px' }}>
+                Available Doctor <span style={{ color: '#ef4444' }}>*</span>
+              </label>
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', display: 'flex' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></svg>
+                </div>
+                <select
+                  name="doctorId"
+                  value={formData.doctorId}
+                  onChange={(e) => setFormData({...formData, doctorId: e.target.value})}
+                  required
+                  style={{
+                    width: '100%', padding: '12px 14px 12px 38px', borderRadius: '10px',
+                    border: '1px solid #e2e8f0', background: 'white', fontSize: '0.9rem',
+                    color: formData.doctorId ? '#1e293b' : '#94a3b8',
+                    appearance: 'none', cursor: 'pointer', fontFamily: 'inherit',
+                    transition: 'all 0.2s ease', outline: 'none'
+                  }}
+                  onFocus={e => e.target.style.borderColor = '#3b82f6'}
+                  onBlur={e => e.target.style.borderColor = '#e2e8f0'}
+                >
+                  <option value="" disabled>Select Doctor...</option>
+                  {doctors.map(profile => {
+                    const docUser = profile.user || {};
+                    const id = docUser._id || profile._id;
+                    const name = docUser.name || 'Unknown Doctor';
+                    return (
+                      <option key={id} value={id} style={{ color: '#1e293b' }}>
+                        Dr. {name} {profile.specialization ? `(${profile.specialization})` : ''}
+                      </option>
+                    );
+                  })}
+                </select>
+                <div style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#64748b' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <InputField label="Date" type="date" name="date" value={formData.date} onChange={(e) => setFormData({...formData, date: e.target.value})} required />
               <InputField label="Time Slot" name="timeSlot" placeholder="e.g. 10:00 AM" value={formData.timeSlot} onChange={(e) => setFormData({...formData, timeSlot: e.target.value})} required />
