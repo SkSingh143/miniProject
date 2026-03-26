@@ -120,7 +120,6 @@ const DashboardLayout = () => {
       { name: 'Doctors', path: '/clinic_admin/doctors' },
       { name: 'Walk-In Booking', path: '/clinic_admin/book-walk-in' },
       { name: 'Clinic Profile', path: '/clinic-admin/profile' },
-      { name: 'Patient History', path: '/clinic-admin/appointments' },
     ],
     doctor: [
       { name: 'Dashboard', path: '/doctor/dashboard' },
